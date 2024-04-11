@@ -9,4 +9,9 @@ public abstract class Entity {
         this.coordinates = coordinates;
         this.entityName = entityName;
     }
+
+    public String getName() {
+        String name = this.entityName.toString();
+        return name;
+    }
 }
