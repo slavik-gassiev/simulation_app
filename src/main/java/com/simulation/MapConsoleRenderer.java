@@ -14,10 +14,11 @@ public class MapConsoleRenderer {
 
     public void render() {
        HashMap<Coordinates, Entity> entitys = map.entitys;
-        for (int lat = 0; lat < 8; lat++) {
+        for (int lat = 1; lat <= 8; lat++) {
             String stroke = "";
-            for (int lon  = 0; lon < 8.; lon++) {
-                Coordinates coordinates = new Coordinates(lon,lat);
+            for (int lon  = 1; lon <= 8; lon++) {
+                int latitude = 9 - lat;
+                Coordinates coordinates = new Coordinates(lon,latitude);
                 if(entitys.containsKey(coordinates)){
                     stroke += (" "+ getSquareForEntity(coordinates) + " ");
                 } else {
