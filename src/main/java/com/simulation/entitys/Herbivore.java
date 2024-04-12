@@ -23,9 +23,11 @@ public class Herbivore extends Creature {
 
     @Override
     protected void makeMove(CoordinatesShift coordinatesShift) {
-        if(Map.canShift(this.coordinates, coordinatesShift))
-        this.coordinates.longitude += coordinatesShift.lonShift;
-        this.coordinates.latitude += coordinatesShift.latShift;
+        if(Map.canShift(this.coordinates, coordinatesShift)) {
+            this.coordinates.longitude += coordinatesShift.lonShift;
+            this.coordinates.latitude += coordinatesShift.latShift;
+        }
+        
     }
 
   
