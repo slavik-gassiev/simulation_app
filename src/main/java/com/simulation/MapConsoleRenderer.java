@@ -29,7 +29,7 @@ public class MapConsoleRenderer {
 
 
     private String getEmptySquare(Coordinates coordinates) {
-        String result = "    :    ";
+        String result = "  :: ";
 
 
         return result;
@@ -38,9 +38,27 @@ public class MapConsoleRenderer {
 
     private String getSquareForEntity(Coordinates coordinates) {
         
-        Entity entity = map.entitys.get(coordinates);
-        String result = entity.getName();
+        String entityName = map.entitys.get(coordinates).getName();
+        String result = getEmojiForEntity(entityName);
         return result;
         
+    }
+
+
+    private String getEmojiForEntity(String entityName) {
+        switch(entityName) {
+            case "GRASS":
+                return " G ";
+            case "ROCK":
+                return " R ";
+            case "TREE":
+                return " T ";
+            case "HERBIVORE":
+                return " H ";
+            case "PREDATOR":
+                return " P ";
+            default:
+                return " :: ";
+        }
     }
 }
