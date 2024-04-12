@@ -2,6 +2,8 @@ package com.simulation;
 
 import java.util.HashMap;
 
+import com.simulation.entitys.*;
+
 public class Map {
     HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
 
@@ -12,6 +14,7 @@ public class Map {
     }
 
     public void setDefaultEntitys() {
+
         setEntitys(new Coordinates(1, 1), new Rock(new Coordinates(1, 1), EntityName.ROCK));
         setEntitys(new Coordinates(2, 1), new Rock(new Coordinates(2, 1), EntityName.TREE));
         setEntitys(new Coordinates(3, 1), new Rock(new Coordinates(3, 1), EntityName.ROCK));
@@ -26,4 +29,20 @@ public class Map {
         setEntitys(new Coordinates(3, 8), new Rock(new Coordinates(3, 1), EntityName.ROCK));
         
     }
+
+
+    public static boolean canShift(Coordinates coordinates, CoordinatesShift coordinatesShift) {
+       if (!((coordinates.longitude += coordinatesShift.lonShift) >= 8
+        && (coordinates.latitude += coordinatesShift.latShift) >= 8)) {
+            return true;
+       } else {
+            return false;
+       }
+    }
+
 }
+
+    
+
+
+

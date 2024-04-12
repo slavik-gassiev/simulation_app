@@ -2,6 +2,8 @@ package com.simulation;
 
 import java.util.HashMap;
 
+import com.simulation.entitys.Entity;
+
 public class MapConsoleRenderer {
     public Map map;
 

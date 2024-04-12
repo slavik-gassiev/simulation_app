@@ -1,4 +1,7 @@
-package com.simulation;
+package com.simulation.entitys;
+
+import com.simulation.Coordinates;
+import com.simulation.EntityName;
 
 public abstract class Entity {
     public Coordinates coordinates;

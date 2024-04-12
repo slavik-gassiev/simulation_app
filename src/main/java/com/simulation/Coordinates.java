@@ -1,12 +1,19 @@
 package com.simulation;
 
 public class Coordinates {
-    public final Integer longitude;
-    public final Integer latitude;
+    public Integer longitude;
+    public Integer latitude;
     public Coordinates(Integer longitude, Integer latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+
+
+
+
+
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
