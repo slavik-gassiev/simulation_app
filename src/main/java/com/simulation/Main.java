@@ -9,6 +9,7 @@ public class Main {
         MapConsoleRenderer renderer = new MapConsoleRenderer(map);
         renderer.render();
         
+        
       
     }
 }

@@ -1,11 +1,13 @@
 package com.simulation;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.simulation.entitys.*;
 
 public class Map {
-    HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
+    public HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
 
 
     public void setEntitys(Coordinates coordinates, Entity entity) {
@@ -33,17 +35,74 @@ public class Map {
         
     }
 
-
-    public static boolean canShift(Coordinates coordinates, CoordinatesShift coordinatesShift) {
-       if (!((coordinates.longitude += coordinatesShift.lonShift) > 8
-        && (coordinates.latitude += coordinatesShift.latShift) > 8)) {
-            return true;
-       } else {
+    public boolean isSquareInMapAvailable(Coordinates coordinates) {
+        if((coordinates.longitude > 8 || coordinates.latitude > 8) 
+        || (coordinates.longitude < 1 || coordinates.latitude < 1)){
             return false;
-       }
+        }
+        return true;
     }
 
-}
+
+
+    public Set<Coordinates> getSpeedSquares(Integer speed, Coordinates coordinates) {
+        Set<Coordinates> result = new HashSet<>();
+        for (int lon = -speed; lon < speed; lon++) {
+            for (int lat = -speed; lat < speed; lat++) {
+                if(lon == 0 && lat == 0) continue;
+                Coordinates newCoordinates = new Coordinates(coordinates.longitude + lon, coordinates.latitude + lat);
+                if(!(isSquareInMapAvailable(newCoordinates))) continue;
+                result.add(newCoordinates);
+            }
+        }
+
+        return result;
+    }
+
+    public boolean isSquareEmpty(Coordinates coordinates) {
+        if(!(entitys.containsKey(coordinates))){
+            return true;
+        } 
+
+        return false;
+    }
+
+    public boolean isSquareAvailableForHervivore(Coordinates coordinates) {
+        if(!(isSquareInMapAvailable(coordinates))){
+            return false;
+        }
+
+       if (isSquareEmpty(coordinates)){
+            return true;
+       }
+
+       if (isSquareHasGrass(coordinates)) {
+            return true;
+       }
+
+       return false;
+    }
+
+    public boolean isSquareHasGrass(Coordinates coordinates) {
+    
+        Entity entity = entitys.get(coordinates);
+        if(entity.entityName == EntityName.GRASS) {
+             return true;
+        }
+
+        return false;
+
+        }
+
+
+        
+    }
+
+
+
+
+
+
 
     
 
