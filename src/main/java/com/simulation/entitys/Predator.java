@@ -3,6 +3,7 @@ package com.simulation.entitys;
 import com.simulation.Coordinates;
 import com.simulation.CoordinatesShift;
 import com.simulation.EntityName;
+import com.simulation.Map;
 
 public class Predator extends Creature {
 
@@ -12,8 +13,11 @@ public class Predator extends Creature {
     }
 
     @Override
-    protected void makeMove(CoordinatesShift coordinatesShift) {
-        
+    protected void makeMove(Map map) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'makeMove'");
     }
+
+   
 
 }

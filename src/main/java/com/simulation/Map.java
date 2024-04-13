@@ -2,6 +2,7 @@ package com.simulation;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.simulation.entitys.*;
@@ -28,9 +29,9 @@ public class Map {
 
         setEntitys(new Coordinates(1, 8), new Rock(new Coordinates(1, 1), EntityName.ROCK));
         setEntitys(new Coordinates(2, 8), new Rock(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(3, 8), new Rock(new Coordinates(3, 1), EntityName.ROCK));
+        setEntitys(new Coordinates(4, 8), new Grass(new Coordinates(4, 8), EntityName.GRASS));
 
-        setEntitys(new Coordinates(4, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 2, 2));
+        setEntitys(new Coordinates(4, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
         
         
     }
@@ -105,27 +106,30 @@ public class Map {
         return false;
     }
 
-    private boolean isSquareClose(Coordinates sourceCoordinates, Coordinates checkingCoordinates) {
+    public boolean isSquareClose(Coordinates sourceCoordinates, Coordinates checkingCoordinates) {
 
         if(isSquareEmpty(checkingCoordinates)) {
             return false;
         }
 
         Set<Coordinates> closeCoordinates = new HashSet<>();
-        for (int lon = -1; lon < 1; lon++) {
+        for (int lon = -1; lon < 2; lon++) {
             if(lon == 0) continue;
             Coordinates coordinates = new Coordinates(checkingCoordinates.longitude + lon, checkingCoordinates.latitude);
             closeCoordinates.add(coordinates);
         }
 
-        for (int lat = -1; lat < 1; lat++) {
+        for (int lat = -1; lat < 2; lat++) {
             if(lat == 0) continue;
             Coordinates coordinates = new Coordinates(checkingCoordinates.longitude, checkingCoordinates.latitude + lat);
             closeCoordinates.add(coordinates);
         }
 
+        
+
         for (Coordinates coordinates : closeCoordinates) {
-            if(coordinates == sourceCoordinates) {
+            if(!(isSquareInMapAvailable(coordinates))) continue;
+            if(Objects.equals(coordinates, sourceCoordinates)) {
                 return true;
             }
         }
