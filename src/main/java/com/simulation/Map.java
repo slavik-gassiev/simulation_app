@@ -94,6 +94,56 @@ public class Map {
 
         }
 
+    public boolean isGrassClose(Coordinates sourceCoordinates, Coordinates checkingCoordinates) {
+        if(!(isSquareHasGrass(checkingCoordinates))){
+            return false;
+        }
+        if(isSquareClose(sourceCoordinates, checkingCoordinates)){
+           return true;
+        }
+
+        return false;
+    }
+
+    private boolean isSquareClose(Coordinates sourceCoordinates, Coordinates checkingCoordinates) {
+
+        if(isSquareEmpty(checkingCoordinates)) {
+            return false;
+        }
+
+        Set<Coordinates> closeCoordinates = new HashSet<>();
+        for (int lon = -1; lon < 1; lon++) {
+            if(lon == 0) continue;
+            Coordinates coordinates = new Coordinates(checkingCoordinates.longitude + lon, checkingCoordinates.latitude);
+            closeCoordinates.add(coordinates);
+        }
+
+        for (int lat = -1; lat < 1; lat++) {
+            if(lat == 0) continue;
+            Coordinates coordinates = new Coordinates(checkingCoordinates.longitude, checkingCoordinates.latitude + lat);
+            closeCoordinates.add(coordinates);
+        }
+
+        for (Coordinates coordinates : closeCoordinates) {
+            if(coordinates == sourceCoordinates) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    public void eatGrass(Coordinates from, Coordinates to, Integer healfPoint) {
+        Entity herbivore = new Herbivore(to, EntityName.HERBIVORE, 3, healfPoint++);
+        shift(from, to, herbivore);
+    }
+
+    private void shift(Coordinates from, Coordinates to, Entity entity) {
+        entitys.remove(from);
+        setEntitys(to, entity);
+    }
+
 
         
     }

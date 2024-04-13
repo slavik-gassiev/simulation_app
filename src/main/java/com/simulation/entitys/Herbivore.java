@@ -29,8 +29,8 @@ public class Herbivore extends Creature {
         Set<Coordinates> speedSquares = map.getSpeedSquares(this.speed, this.coordinates);
         for (Coordinates coordinates : speedSquares) {
             if(!(map.isSquareAvailableForHervivore(coordinates))) continue;
-            if(map.isSquareHasGrass(coordinates)) {
-                map.shift(this.coordinates, coordinates);
+            if(map.isGrassClose(this.coordinates, coordinates)) {
+                map.eatGrass(this.coordinates, coordinates, healfPoint);
             }
             
         }
