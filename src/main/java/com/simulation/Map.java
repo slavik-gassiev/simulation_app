@@ -29,7 +29,7 @@ public class Map {
 
         setEntitys(new Coordinates(1, 8), new Rock(new Coordinates(1, 1), EntityName.ROCK));
         setEntitys(new Coordinates(2, 8), new Rock(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(4, 8), new Grass(new Coordinates(4, 8), EntityName.GRASS));
+        setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
 
         setEntitys(new Coordinates(4, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
         
@@ -123,6 +123,14 @@ public class Map {
             if(lat == 0) continue;
             Coordinates coordinates = new Coordinates(checkingCoordinates.longitude, checkingCoordinates.latitude + lat);
             closeCoordinates.add(coordinates);
+        }
+
+        for (int lon = -1; lon < 2; lon++) {
+            for (int lat = -1; lat < 2; lat++) {
+                if(lat == 0 && lon == 0) continue;
+                Coordinates coordinates = new Coordinates(checkingCoordinates.longitude + lon, checkingCoordinates.latitude + lat);
+                closeCoordinates.add(coordinates);
+            }
         }
 
         
