@@ -17,8 +17,7 @@ public class Map {
     }
 
     public Entity getEntity(Coordinates coordinates) {
-        Entity entity = entitys.get(coordinates);
-        return entity;
+       return entitys.get(coordinates);
     }
 
     public void setDefaultEntitys() {
@@ -173,23 +172,22 @@ public class Map {
         shift(from, to, entity);    
     }
 
-    public boolean isEntityHasLowHP(Coordinates coordinates, EntityName entityName) {
-        if(isSquareEmpty(coordinates)) {
-            System.out.println("Square is empty");
-            return false;
+    public void hitEntity(Coordinates coordinates, Integer hitStrength) {
+       Entity entity =  getEntity(coordinates);
+       entity.healfPoint -= hitStrength;
+       shiftEntity(coordinates, entity);
+    }
+
+    public boolean isEntityHPLow(Coordinates coordinates) {
+        Entity entity = getEntity(coordinates);
+        if(entity.healfPoint <= 0) {
+            return true;
         }
 
-        if(entityName == EntityName.HERBIVORE) {
-            // Entity entity = entitys.get(coordinates);
-            for (Entity entity : entitys.values()) {
-                if(entity.entityName == entityName) {
-                    entity.
-                }
-            }
-        }
-        
+        return false;
+    }
 
-        // int hp = getEntityHp(entity);
+
         
        
     }
@@ -197,8 +195,6 @@ public class Map {
   
 
 
-
-}
 
 
 
