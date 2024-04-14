@@ -16,6 +16,11 @@ public class Map {
         entitys.put(coordinates, entity);
     }
 
+    public Entity getEntity(Coordinates coordinates) {
+        Entity entity = entitys.get(coordinates);
+        return entity;
+    }
+
     public void setDefaultEntitys() {
 
         setEntitys(new Coordinates(1, 1), new Rock(new Coordinates(1, 1), EntityName.ROCK));
@@ -68,42 +73,47 @@ public class Map {
         return false;
     }
 
-    public boolean isSquareAvailableForHervivore(Coordinates coordinates) {
+    public boolean isSquareAvailableForEntity(Coordinates coordinates, EntityName entityName) {
         if(!(isSquareInMapAvailable(coordinates))){
             return false;
         }
-
-       if (isSquareEmpty(coordinates)){
+        
+        if (isSquareEmpty(coordinates)){
             return true;
-       }
-
-       if (isSquareHasGrass(coordinates)) {
+        }
+        
+        if (isSquareHasEntity(coordinates, entityName)) {
             return true;
-       }
-
-       return false;
+        }
+        
+        return false;
     }
-
-    public boolean isSquareHasGrass(Coordinates coordinates) {
     
-        Entity entity = entitys.get(coordinates);
-        if(entity.entityName == EntityName.GRASS) {
+
+
+
+
+    public boolean isSquareHasEntity(Coordinates coordinates, EntityName entityName) {
+    
+        Entity entity = getEntity(coordinates);
+        if(entity.entityName == entityName) {
              return true;
         }
 
         return false;
 
         }
-
-    public boolean isGrassClose(Coordinates sourceCoordinates, Coordinates checkingCoordinates) {
-        if(!(isSquareHasGrass(checkingCoordinates))){
+        
+        public boolean isEntityClose(Coordinates sourceCoordinates, Coordinates checkingCoordinates, EntityName entityName) {
+            if(!(isSquareHasEntity(checkingCoordinates, entityName))){
+                return false;
+            }
+            if(isSquareClose(sourceCoordinates, checkingCoordinates)){
+                return true;
+            }
+            
             return false;
-        }
-        if(isSquareClose(sourceCoordinates, checkingCoordinates)){
-           return true;
-        }
-
-        return false;
+           
     }
 
     public boolean isSquareClose(Coordinates sourceCoordinates, Coordinates checkingCoordinates) {
@@ -145,20 +155,50 @@ public class Map {
         return false;
 
     }
-
-    public void eatGrass(Coordinates from, Coordinates to, Integer healfPoint) {
-        Entity herbivore = new Herbivore(to, EntityName.HERBIVORE, 3, healfPoint++);
-        shift(from, to, herbivore);
-    }
-
-    private void shift(Coordinates from, Coordinates to, Entity entity) {
+    
+    public void shift(Coordinates from, Coordinates to, Entity entity) {
         entitys.remove(from);
         setEntitys(to, entity);
     }
 
 
-        
+    public void eatEntity(Coordinates to, Entity entity) {
+        Coordinates from = entity.coordinates;
+        shift(from, to, entity);
     }
+
+
+    public void shiftEntity(Coordinates to, Entity entity) {
+        Coordinates from = entity.coordinates;
+        shift(from, to, entity);    
+    }
+
+    public boolean isEntityHasLowHP(Coordinates coordinates, EntityName entityName) {
+        if(isSquareEmpty(coordinates)) {
+            System.out.println("Square is empty");
+            return false;
+        }
+
+        if(entityName == EntityName.HERBIVORE) {
+            // Entity entity = entitys.get(coordinates);
+            for (Entity entity : entitys.values()) {
+                if(entity.entityName == entityName) {
+                    entity.
+                }
+            }
+        }
+        
+
+        // int hp = getEntityHp(entity);
+        
+       
+    }
+
+  
+
+
+
+}
 
 
 

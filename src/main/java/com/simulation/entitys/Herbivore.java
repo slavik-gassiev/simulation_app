@@ -27,17 +27,20 @@ public class Herbivore extends Creature {
     protected void makeMove(Map map) {
         // Проверить на то что обект не выходит за грани каррты
         Set<Coordinates> speedSquares = map.getSpeedSquares(this.speed, this.coordinates);
+        Herbivore newHerbivore = new Herbivore(this.coordinates, this.entityName, this.speed, this.healfPoint);
         for (Coordinates coordinates : speedSquares) {
-            if(!(map.isSquareAvailableForHervivore(coordinates))) continue;
-            if(map.isGrassClose(this.coordinates, coordinates)) {
-                map.eatGrass(this.coordinates, coordinates, healfPoint);
+            if(!(map.isSquareAvailableForEntity(coordinates, this.entityName))) continue;
+            if(map.isEntityClose(this.coordinates, coordinates, EntityName.GRASS)) {
+                newHerbivore.healfPoint += 1;
+                map.eatEntity(coordinates, newHerbivore);
             }
+            newHerbivore.healfPoint -= 1;
+            map.shiftEntity(coordinates, newHerbivore);
             
         }
         // Проверить что клетка пустая для хода
         // Проверить есть ли рядом трава
-        // Если трава рядом то приблизиться к ней
-        // Если трава напротив то сесть ее
+        // Если трава рядом то приблизиться к не     // Если трава напротив то сесть ее
         // Если травы нет то паходи на пустую клетку
         
     }
