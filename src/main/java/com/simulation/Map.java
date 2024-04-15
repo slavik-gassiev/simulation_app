@@ -9,6 +9,7 @@ import com.simulation.entitys.*;
 
 public class Map {
     public HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
+   
 
 
     public void setEntitys(Coordinates coordinates, Entity entity) {
@@ -16,9 +17,13 @@ public class Map {
         entitys.put(coordinates, entity);
     }
 
+
+
+    
+
     public Entity getEntity(Coordinates coordinates) {
-       return entitys.get(coordinates);
-    }
+        return entitys.get(coordinates);
+     }
 
     public void setDefaultEntitys() {
 
@@ -36,9 +41,12 @@ public class Map {
         setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
 
         setEntitys(new Coordinates(4, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
-        
+
+        // setEntitys(new Coordinates(7, 7), new Predator(new Coordinates(4, 7),  EntityName.PREDATOR, 1, 2, 1));
+
         
     }
+
 
     public boolean isSquareInMapAvailable(Coordinates coordinates) {
         if((coordinates.longitude > 8 || coordinates.latitude > 8) 
@@ -93,9 +101,14 @@ public class Map {
 
 
     public boolean isSquareHasEntity(Coordinates coordinates, EntityName entityName) {
+
+        if(isSquareEmpty(coordinates)) {
+            return false;
+        }
     
         Entity entity = getEntity(coordinates);
-        if(entity.entityName == entityName) {
+        
+        if(Objects.equals(entity.entityName, entityName)) {
              return true;
         }
 
@@ -157,6 +170,7 @@ public class Map {
     
     public void shift(Coordinates from, Coordinates to, Entity entity) {
         entitys.remove(from);
+        entitys.remove(to);
         setEntitys(to, entity);
     }
 

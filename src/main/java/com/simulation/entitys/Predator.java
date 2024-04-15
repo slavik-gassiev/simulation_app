@@ -3,7 +3,7 @@ package com.simulation.entitys;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.Random;;
+import java.util.Random;
 
 import com.simulation.Coordinates;
 import com.simulation.CoordinatesShift;
@@ -32,7 +32,7 @@ public class Predator extends Creature {
     }
 
     @Override
-    protected void makeMove(Map map) {
+    public void makeMove(Map map) {
         Set<Coordinates> speedSquares = map.getSpeedSquares(this.speed, this.coordinates);
         Predator newPredator = new Predator(this.coordinates, this.entityName, this.speed, this.healfPoint, this.hitStrength);
         List<Coordinates> availableSquares = new LinkedList<>();

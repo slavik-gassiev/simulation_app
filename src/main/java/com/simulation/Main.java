@@ -5,16 +5,27 @@ import com.simulation.entitys.*;
 public class Main {
     public static void main(String[] args) {
         Map map = new Map();
-        map.setDefaultEntitys();
         MapConsoleRenderer renderer = new MapConsoleRenderer(map);
         renderer.render();
-        // boolean x = map.isGrassClose(new Coordinates(4, 7), new Coordinates(3, 8));
-        // boolean x = map.isSquareClose(new Coordinates(4, 7), new Coordinates(4, 8));
-        // System.out.println(x);
-        // renderer.render();
+        System.out.println("--------------------");
+
+        Actions actions = new Actions(map);
+        actions.initAction();
+        renderer.render();
+        System.out.println("--------------------");
+
+        actions.turnAction();
+        renderer.render();
+        System.out.println("--------------------");
         
+        // Entity entity = map.entitys.get(new Coordinates(4, 7));
+
+        // for (int i = 0; i < 3; i++) {
+        //     entity.makeMove(map);
+        //     renderer.render();
+        //     System.out.println("--------------------");
+        // }
         
-        
-      
+        // int x = 3;
     }
 }

@@ -31,7 +31,7 @@ public class Herbivore extends Creature {
     }
 
     @Override
-    protected void makeMove(Map map) {
+    public void makeMove(Map map) {
         // Проверить на то что обект не выходит за грани каррты
         Set<Coordinates> speedSquares = map.getSpeedSquares(this.speed, this.coordinates);
         List<Coordinates> availableSquares = new LinkedList<>();
