@@ -12,15 +12,17 @@ public class Main {
         renderer.render();
         System.out.println("--------------------");
 
-        
+        actions.turnAction();
+        renderer.render();
+        System.out.println("--------------------");
         
         // Entity entity = map.entitys.get(new Coordinates(4, 7));
 
-        for (int i = 0; i < 3; i++) {
-            actions.turnAction();
-            renderer.render();
-            System.out.println("--------------------");
-        }
+        // for (int i = 0; i < 3; i++) {
+        //     actions.turnAction();
+        //     renderer.render();
+        //     System.out.println("--------------------");
+        // }
         
         // int x = 3;
     }

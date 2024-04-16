@@ -13,9 +13,12 @@ public class Map {
 
 
     public void setEntitys(Coordinates coordinates, Entity entity) {
+        if(Objects.equals(null, entity)) {
+            System.out.println("entity is null");
+        }
         entity.coordinates = coordinates;
         entitys.put(coordinates, entity);
-        
+        int x =3;
     }
 
 
@@ -24,11 +27,12 @@ public class Map {
      }
 
      public void shift(Coordinates from, Coordinates to) {
-         Entity entity = getEntity(from);
+        Entity entity = getEntity(from);
         int x = 3;
         entitys.remove(from);
-        setEntitys(to, entity);
-        removeEnity(from);
+        removeEnity(to);
+        setEntitys(new Coordinates(5, 4), entity);
+        
      }
  
      public void removeEnity(Coordinates coordinates) {
@@ -70,7 +74,7 @@ public class Map {
 
         setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6),  EntityName.HERBIVORE, 1, 2));
 
-        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
+        // setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
 
         
     }

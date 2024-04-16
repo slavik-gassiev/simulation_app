@@ -35,7 +35,8 @@ public class Actions {
 
             for (Entity entity : map.entitys.values()) {
                 if(!(Objects.equals(entity.entityName, EntityName.HERBIVORE) || 
-                Objects.equals(entity.entityName, EntityName.PREDATOR))) continue;
+                Objects.equals(entity.entityName, EntityName.PREDATOR) ||
+                Objects.equals(entity, null))) continue;
                 newEntitys.add(entity.coordinates);
                 
               
