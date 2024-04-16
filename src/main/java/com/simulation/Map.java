@@ -15,10 +15,12 @@ public class Map {
     public void setEntitys(Coordinates coordinates, Entity entity) {
         if(Objects.equals(null, entity)) {
             System.out.println("entity is null");
+        } else {
+            entity.coordinates = coordinates;
+            entitys.put(coordinates, entity);
+            int x =3;
         }
-        entity.coordinates = coordinates;
-        entitys.put(coordinates, entity);
-        int x =3;
+        
     }
 
 

@@ -45,10 +45,15 @@ public class Actions {
 
             for (Coordinates coordinates : newEntitys) {
                 
-                map.getEntity(coordinates).makeMove(map);     
-              
+                map.getEntity(coordinates).makeMove(map);
+                
+                // break;   
+            //   int x = 4;
             }
 
+            // for (int i = 0; i < newEntitys.size(); i++) {
+            //     map.getEntity(newEntitys.get(i)).makeMove(map);
+            // }
            
         }
     }
