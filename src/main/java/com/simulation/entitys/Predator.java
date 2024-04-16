@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.Random;
 
 import com.simulation.Coordinates;
-import com.simulation.CoordinatesShift;
 import com.simulation.EntityName;
 import com.simulation.Map;
 
@@ -34,7 +33,7 @@ public class Predator extends Creature {
     @Override
     public void makeMove(Map map) {
         Set<Coordinates> speedSquares = map.getSpeedSquares(this.speed, this.coordinates);
-        Predator newPredator = new Predator(this.coordinates, this.entityName, this.speed, this.healfPoint, this.hitStrength);
+        // Predator newPredator = new Predator(this.coordinates, this.entityName, this.speed, this.healfPoint, this.hitStrength);
         List<Coordinates> availableSquares = new LinkedList<>();
         boolean shifted = false;
 
@@ -43,8 +42,8 @@ public class Predator extends Creature {
             if(map.isEntityClose(this.coordinates, coordinates, EntityName.HERBIVORE)) {
                 map.hitEntity(coordinates, this.hitStrength);
                 if(map.isEntityHPLow(coordinates)) {
-                    newPredator.healfPoint += 1;
-                    map.eatEntity(coordinates, newPredator);
+                    // newPredator.healfPoint += 1;
+                    map.eatEntity(this.coordinates, coordinates);
                     shifted = true;
                     break;
                 }          
@@ -58,8 +57,8 @@ public class Predator extends Creature {
         if(!shifted) {
             int randomInt = random.nextInt(availableSquares.size());
             Coordinates randomCoordinates = availableSquares.get(randomInt);
-            newPredator.healfPoint -= 1;
-            map.shiftEntity(randomCoordinates, newPredator);
+            // newPredator.healfPoint -= 1;
+            map.shiftEntity(this.coordinates, randomCoordinates);
         }
         
     }

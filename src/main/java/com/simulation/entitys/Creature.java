@@ -1,7 +1,6 @@
 package com.simulation.entitys;
 
 import com.simulation.Coordinates;
-import com.simulation.CoordinatesShift;
 import com.simulation.EntityName;
 import com.simulation.Map;
 

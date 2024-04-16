@@ -8,7 +8,9 @@ public class Grass extends Entity{
 
     public Grass(Coordinates coordinates, EntityName entityName) {
         super(coordinates, entityName);
-        //TODO Auto-generated constructor stub
+        
+        this.coordinates = coordinates;
+        this.entityName = entityName;
     }
 
     @Override

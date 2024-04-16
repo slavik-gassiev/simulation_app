@@ -1,6 +1,9 @@
 package com.simulation.entitys;
 
+
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 import com.simulation.Coordinates;
@@ -11,7 +14,9 @@ public class Actions {
 
     
 
-    Map map;
+
+    private Map map;
+
     public Actions(Map map) {
         this.map = map;
     }
@@ -25,20 +30,31 @@ public class Actions {
     }
 
     public void turnAction() {
-        HashMap<Coordinates, Entity> newEntitys = new HashMap<>();
-        newEntitys = map.entitys;
-       for (Coordinates coordinates : newEntitys.keySet()) {
-        // map.entitys.get(coordinates).makeMove(map);
-        Entity entity = newEntitys.get(coordinates);
-        if(!((entity.entityName == EntityName.HERBIVORE) || (entity.entityName == EntityName.PREDATOR))) continue;
-        System.out.println(coordinates.longitude + " " + coordinates.latitude);
-        map.entitys.get(coordinates).makeMove(map);
-        break;
-       }
+            List<Coordinates> newEntitys = new LinkedList<>();
+            
 
-    //     map.entitys.get(new Coordinates(4, 7)).makeMove(map);
-    //    int x = 3;
+            for (Entity entity : map.entitys.values()) {
+                if(!(Objects.equals(entity.entityName, EntityName.HERBIVORE) || 
+                Objects.equals(entity.entityName, EntityName.PREDATOR))) continue;
+                newEntitys.add(entity.coordinates);
+                
+              
+            }
+
+
+            for (Coordinates coordinates : newEntitys) {
+                
+                map.getEntity(coordinates).makeMove(map);     
+              
+            }
+
+           
+        }
     }
 
+
+
+
     
-}
+
+

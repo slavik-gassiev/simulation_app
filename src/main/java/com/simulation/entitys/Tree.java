@@ -5,9 +5,13 @@ import com.simulation.EntityName;
 import com.simulation.Map;
 
 public class Tree extends Entity{
+
    
     public Tree(Coordinates coordinates, EntityName entityName){
         super(coordinates, entityName);
+
+        this.coordinates = coordinates;
+        this.entityName = entityName;
     }
 
     @Override

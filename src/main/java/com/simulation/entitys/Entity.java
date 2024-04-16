@@ -6,7 +6,7 @@ import com.simulation.Map;
 
 public abstract class Entity {
     public Coordinates coordinates;
-    public final EntityName entityName;
+    public EntityName entityName;
     public Integer healfPoint = 1;
 
 

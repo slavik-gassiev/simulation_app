@@ -15,34 +15,62 @@ public class Map {
     public void setEntitys(Coordinates coordinates, Entity entity) {
         entity.coordinates = coordinates;
         entitys.put(coordinates, entity);
+        
     }
 
-
-
-    
 
     public Entity getEntity(Coordinates coordinates) {
         return entitys.get(coordinates);
      }
 
+     public void shift(Coordinates from, Coordinates to) {
+         Entity entity = getEntity(from);
+        int x = 3;
+        entitys.remove(from);
+        setEntitys(to, entity);
+        removeEnity(from);
+     }
+ 
+     public void removeEnity(Coordinates coordinates) {
+         entitys.remove(coordinates);
+     }
+ 
+ 
+     public void eatEntity(Coordinates from, Coordinates to) {
+         // Coordinates from = entity.coordinates;
+         
+         shift(from, to);
+     }
+ 
+ 
+     public void shiftEntity(Coordinates from, Coordinates to) {
+         
+         shift(from, to);    
+     }
+ 
+     public void hitEntity(Coordinates coordinates, Integer hitStrength) {
+        getEntity(coordinates).healfPoint -= hitStrength;
+     //    entity.healfPoint -= hitStrength;
+     //    shiftEntity(coordinates, entity);
+     }
     public void setDefaultEntitys() {
 
         setEntitys(new Coordinates(1, 1), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 1), new Rock(new Coordinates(2, 1), EntityName.TREE));
+        setEntitys(new Coordinates(2, 1), new Tree(new Coordinates(2, 1), EntityName.TREE));
         setEntitys(new Coordinates(3, 1), new Rock(new Coordinates(3, 1), EntityName.ROCK));
 
         setEntitys(new Coordinates(1, 4), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 4), new Rock(new Coordinates(2, 1), EntityName.TREE));
+        setEntitys(new Coordinates(2, 4), new Tree(new Coordinates(2, 1), EntityName.TREE));
         setEntitys(new Coordinates(3, 4), new Rock(new Coordinates(3, 1), EntityName.ROCK));
 
 
         setEntitys(new Coordinates(1, 8), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 8), new Rock(new Coordinates(2, 1), EntityName.TREE));
+        setEntitys(new Coordinates(2, 8), new Tree(new Coordinates(2, 1), EntityName.TREE));
         setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
 
-        setEntitys(new Coordinates(4, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
+        setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6),  EntityName.HERBIVORE, 1, 2));
 
-        // setEntitys(new Coordinates(7, 7), new Predator(new Coordinates(4, 7),  EntityName.PREDATOR, 1, 2, 1));
+        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
 
         
     }
@@ -168,29 +196,6 @@ public class Map {
 
     }
     
-    public void shift(Coordinates from, Coordinates to, Entity entity) {
-        entitys.remove(from);
-        entitys.remove(to);
-        setEntitys(to, entity);
-    }
-
-
-    public void eatEntity(Coordinates to, Entity entity) {
-        Coordinates from = entity.coordinates;
-        shift(from, to, entity);
-    }
-
-
-    public void shiftEntity(Coordinates to, Entity entity) {
-        Coordinates from = entity.coordinates;
-        shift(from, to, entity);    
-    }
-
-    public void hitEntity(Coordinates coordinates, Integer hitStrength) {
-       Entity entity =  getEntity(coordinates);
-       entity.healfPoint -= hitStrength;
-       shiftEntity(coordinates, entity);
-    }
 
     public boolean isEntityHPLow(Coordinates coordinates) {
         Entity entity = getEntity(coordinates);
@@ -200,6 +205,8 @@ public class Map {
 
         return false;
     }
+
+   
 
 
         
