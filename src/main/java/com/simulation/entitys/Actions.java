@@ -59,7 +59,7 @@ public class Actions {
             // for (int i = 0; i < newEntitys.size(); i++) {
             //     map.getEntity(newEntitys.get(i)).makeMove(map);
             // }
-                // newEntitys.clear();
+                newEntitys.clear();
         }
     }
 

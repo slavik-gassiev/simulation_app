@@ -30,8 +30,9 @@ public class Map {
 
      public void shift(Coordinates from, Coordinates to) {
         Entity entity = getEntity(from);
-        int x = 3;
+      
         removeEnity(to);
+        
         setEntitys(to, entity);
         entitys.remove(from);
         
@@ -76,7 +77,7 @@ public class Map {
 
         setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6),  EntityName.HERBIVORE, 1, 2));
 
-        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7),  EntityName.HERBIVORE, 1, 2));
+        // setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7),  EntityName.HERBIVORE, 1, 2));
 
         
     }

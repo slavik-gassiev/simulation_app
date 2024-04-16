@@ -14,20 +14,20 @@ import com.simulation.Map;
 
 public class Herbivore extends Creature {
 
-    Coordinates coordinates;
-    EntityName entityName;
-    Integer speed;
-    Integer healfPoint;
+    // public Coordinates coordinates;
+    // EntityName entityName;
+    // Integer speed;
+    // Integer healfPoint;
 
     Random random = new Random();
 
     public Herbivore(Coordinates coordinates, EntityName entityName, Integer speed, Integer healfPoint) {
         super(coordinates, entityName, speed, healfPoint);
         
-        this.coordinates = coordinates;
-        this.entityName = entityName;
-        this.speed = speed;
-        this.healfPoint = healfPoint;
+        // this.coordinates = coordinates;
+        // this.entityName = entityName;
+        // this.speed = speed;
+        // this.healfPoint = healfPoint;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Herbivore extends Creature {
             int randomInt = random.nextInt(availableSquares.size());
             Coordinates randomCoordinates = availableSquares.get(randomInt);
             // newHerbivore.healfPoint -= 1;
-            Coordinates ssCoordinates = this.coordinates;
+            // Coordinates ssCoordinates = this.coordinates;
             map.shiftEntity(this.coordinates, randomCoordinates);
             
             int x = 3;

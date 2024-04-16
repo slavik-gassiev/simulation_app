@@ -11,10 +11,10 @@ import com.simulation.Map;
 
 public class Predator extends Creature {
 
-    Coordinates coordinates;
-    EntityName entityName;
-    Integer speed;
-    Integer healfPoint;
+    // Coordinates coordinates;
+    // EntityName entityName;
+    // Integer speed;
+    // Integer healfPoint;
     Integer hitStrength;
 
     Random random = new Random();
@@ -23,10 +23,10 @@ public class Predator extends Creature {
     public Predator(Coordinates coordinates, EntityName entityName, Integer speed, Integer healfPoint, Integer hitStrength) {
         super(coordinates, entityName, speed, healfPoint);
         
-        this.coordinates = coordinates;
-        this.entityName = entityName;
-        this.speed = speed;
-        this.healfPoint = healfPoint;
+        // this.coordinates = coordinates;
+        // this.entityName = entityName;
+        // this.speed = speed;
+        // this.healfPoint = healfPoint;
         this.hitStrength = hitStrength;
     }
 
