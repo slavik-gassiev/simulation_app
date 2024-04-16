@@ -9,8 +9,8 @@ public class Grass extends Entity{
     public Grass(Coordinates coordinates, EntityName entityName) {
         super(coordinates, entityName);
         
-        this.coordinates = coordinates;
-        this.entityName = entityName;
+        // this.coordinates = coordinates;
+        // this.entityName = entityName;
     }
 
     @Override
