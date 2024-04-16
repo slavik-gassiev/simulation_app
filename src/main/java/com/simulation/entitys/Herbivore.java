@@ -56,9 +56,10 @@ public class Herbivore extends Creature {
             int randomInt = random.nextInt(availableSquares.size());
             Coordinates randomCoordinates = availableSquares.get(randomInt);
             // newHerbivore.healfPoint -= 1;
+            Coordinates ssCoordinates = this.coordinates;
             map.shiftEntity(this.coordinates, randomCoordinates);
             
-            // int x = 3;
+            int x = 3;
         }
         // Проверить что клетка пустая для хода
         // Проверить есть ли рядом трава

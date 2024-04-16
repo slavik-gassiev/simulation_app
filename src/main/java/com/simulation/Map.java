@@ -30,11 +30,10 @@ public class Map {
 
      public void shift(Coordinates from, Coordinates to) {
         Entity entity = getEntity(from);
+        int x = 3;
         removeEnity(to);
         setEntitys(to, entity);
         entitys.remove(from);
-        
-        
         
      }
  
@@ -62,22 +61,22 @@ public class Map {
      }
     public void setDefaultEntitys() {
 
-        setEntitys(new Coordinates(1, 1), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 1), new Tree(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(3, 1), new Rock(new Coordinates(3, 1), EntityName.ROCK));
+        // setEntitys(new Coordinates(1, 1), new Rock(new Coordinates(1, 1), EntityName.ROCK));
+        // setEntitys(new Coordinates(2, 1), new Tree(new Coordinates(2, 1), EntityName.TREE));
+        // setEntitys(new Coordinates(3, 1), new Rock(new Coordinates(3, 1), EntityName.ROCK));
 
-        setEntitys(new Coordinates(1, 4), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 4), new Tree(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(3, 4), new Rock(new Coordinates(3, 1), EntityName.ROCK));
+        // setEntitys(new Coordinates(1, 4), new Rock(new Coordinates(1, 1), EntityName.ROCK));
+        // setEntitys(new Coordinates(2, 4), new Tree(new Coordinates(2, 1), EntityName.TREE));
+        // setEntitys(new Coordinates(3, 4), new Rock(new Coordinates(3, 1), EntityName.ROCK));
 
 
-        setEntitys(new Coordinates(1, 8), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 8), new Tree(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
+        // setEntitys(new Coordinates(1, 8), new Rock(new Coordinates(1, 1), EntityName.ROCK));
+        // setEntitys(new Coordinates(2, 8), new Tree(new Coordinates(2, 1), EntityName.TREE));
+        // setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
 
         setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6),  EntityName.HERBIVORE, 1, 2));
 
-        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(4, 7),  EntityName.HERBIVORE, 1, 2));
+        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7),  EntityName.HERBIVORE, 1, 2));
 
         
     }

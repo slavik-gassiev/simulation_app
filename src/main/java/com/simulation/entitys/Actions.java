@@ -45,7 +45,12 @@ public class Actions {
 
             for (Coordinates coordinates : newEntitys) {
                 
-                map.getEntity(coordinates).makeMove(map);
+            //    Entity entity = map.getEntity(coordinates);
+               int lon = coordinates.longitude;
+               int lat = coordinates.latitude;
+               int x = 3;
+               map.entitys.get(new Coordinates(lon, lat)).makeMove(map);;
+
                 
                 // break;   
             //   int x = 4;
