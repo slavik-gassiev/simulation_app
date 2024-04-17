@@ -13,6 +13,10 @@ import com.simulation.entitys.*;
 public class Map {
     public HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
     private Random random = new Random();
+
+    int eatedGrass;
+    int eatedHerbivore;
+
    
 
 
@@ -36,9 +40,9 @@ public class Map {
         Entity entity = getEntity(from);
       
         removeEnity(to);
-        
-        setEntitys(to, entity);
         entitys.remove(from);
+        setEntitys(to, entity);
+        
         
      }
  
@@ -48,9 +52,26 @@ public class Map {
  
  
      public void eatEntity(Coordinates from, Coordinates to) {
-         // Coordinates from = entity.coordinates;
+         
+         getCountOfEatedEntitys(to);
+         
          
          shift(from, to);
+     }
+
+     private void getCountOfEatedEntitys(Coordinates to) {
+        if(entitys.get(to).entityName == EntityName.GRASS) {
+            eatedGrass += 1;
+         }
+
+         if(entitys.get(to).entityName == EntityName.HERBIVORE) {
+            eatedHerbivore += 1;
+         }
+    }
+
+
+    public void showEatedEntity() {
+
      }
  
  
@@ -66,18 +87,15 @@ public class Map {
      }
     public void setDefaultEntitys() {
 
-        setEntitys(new Coordinates(1, 1), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 1), new Tree(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(3, 1), new Rock(new Coordinates(3, 1), EntityName.ROCK));
+        setEntitys(new Coordinates(1, 2), new Rock(new Coordinates(1, 2), EntityName.ROCK));
+        setEntitys(new Coordinates(2, 4), new Tree(new Coordinates(2, 4), EntityName.TREE));
+        setEntitys(new Coordinates(3, 6), new Rock(new Coordinates(3, 6), EntityName.ROCK));
 
-        setEntitys(new Coordinates(1, 4), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 4), new Tree(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(3, 4), new Rock(new Coordinates(3, 1), EntityName.ROCK));
+        setEntitys(new Coordinates(4, 3), new Rock(new Coordinates(4, 3), EntityName.ROCK));
+        setEntitys(new Coordinates(6, 5), new Tree(new Coordinates(6, 5), EntityName.TREE));
+        setEntitys(new Coordinates(8, 7), new Rock(new Coordinates(8, 7), EntityName.ROCK));
 
 
-        setEntitys(new Coordinates(1, 8), new Rock(new Coordinates(1, 1), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 8), new Tree(new Coordinates(2, 1), EntityName.TREE));
-        setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
 
         setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6),  EntityName.HERBIVORE, 1, 2));
 
@@ -223,8 +241,9 @@ public class Map {
         Coordinates randomCoordinates; 
         while (true) {
             randomCoordinates = new Coordinates(random.nextInt(8), random.nextInt(8));
-            if(((randomCoordinates.longitude == 0) || (randomCoordinates.latitude == 0))) continue;
+            if(((randomCoordinates.longitude < 1) || (randomCoordinates.latitude < 1))) continue;
             if(!(isSquareEmpty(randomCoordinates))) continue;
+         
             return randomCoordinates;
         }
         

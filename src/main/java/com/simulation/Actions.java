@@ -16,7 +16,13 @@ import com.simulation.entitys.Predator;
 public class Actions {
 
     HashMap<EntityName, EntityCount> entitysCounter = new HashMap<>();
+    
 
+    private void setEntityCount() {
+        entitysCounter.put(EntityName.GRASS, new EntityCount(EntityName.GRASS, 0));
+        entitysCounter.put(EntityName.HERBIVORE, new EntityCount(EntityName.HERBIVORE, 0));
+        entitysCounter.put(EntityName.PREDATOR, new EntityCount(EntityName.PREDATOR, 0));
+    }
 
     private Map map;
 
@@ -33,11 +39,12 @@ public class Actions {
     }
 
     public void turnAction() {
-
-
-        makeMoveAllEntitys();
+        setEntityCount();
         countEntitys();
         creatSmalEntity();
+        makeMoveAllEntitys();
+        
+        
         
        
  
@@ -59,7 +66,7 @@ public class Actions {
 
     private void creatSmalEntity() {
         for (EntityCount entityCount : entitysCounter.values()) {
-            if(!(entityCount.count <= 2)) continue;
+            if((entityCount.count >= 2)) continue;
             Coordinates coordinates = map.getRandomCoordinates();
             switch (entityCount.entityName) {
                 case GRASS:
@@ -83,9 +90,11 @@ public class Actions {
 
         
 
-        int grassCounter = 0;
-        int herbivoreCounter = 0;
-        int predatorCounter = 0;
+        int grassCounter = entitysCounter.get(EntityName.GRASS).count;
+        int herbivoreCounter =  entitysCounter.get(EntityName.HERBIVORE).count;
+        int predatorCounter =  entitysCounter.get(EntityName.PREDATOR).count;
+
+        
 
         for (Entity entity  : map.entitys.values()) {
             EntityName name = entity.entityName;
@@ -93,23 +102,27 @@ public class Actions {
             switch (name) {
                 case GRASS:
                     grassCounter += 1;
+                    entitysCounter.get(name).count = grassCounter;
                     break;
                 case HERBIVORE:
                     herbivoreCounter += 1;
+                    entitysCounter.get(name).count = herbivoreCounter;
                     break;
                 case PREDATOR:
                     predatorCounter += 1;
+                    entitysCounter.get(name).count = predatorCounter;
                     break;
                 default:
                     break;
 
                 
             }
+
+     
+            
         }
 
-        entitysCounter.put(EntityName.GRASS, new EntityCount(EntityName.GRASS, grassCounter));
-        entitysCounter.put(EntityName.HERBIVORE, new EntityCount(EntityName.HERBIVORE, herbivoreCounter));
-        entitysCounter.put(EntityName.PREDATOR, new EntityCount(EntityName.PREDATOR, predatorCounter));
+        
 
        
     }
