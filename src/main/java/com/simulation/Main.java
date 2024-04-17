@@ -18,7 +18,7 @@ public class Main {
         
         // Entity entity = map.entitys.get(new Coordinates(4, 7));
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             actions.turnAction();
             renderer.render();
             System.out.println("--------------------");

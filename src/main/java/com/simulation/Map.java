@@ -2,13 +2,17 @@ package com.simulation;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.Random;
 
 import com.simulation.entitys.*;
 
 public class Map {
     public HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
+    private Random random = new Random();
    
 
 
@@ -75,9 +79,9 @@ public class Map {
         setEntitys(new Coordinates(2, 8), new Tree(new Coordinates(2, 1), EntityName.TREE));
         setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
 
-        setEntitys(new Coordinates(4, 8), new Herbivore(new Coordinates(4, 8),  EntityName.HERBIVORE, 1, 2));
+        setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6),  EntityName.HERBIVORE, 1, 2));
 
-        // setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7),  EntityName.HERBIVORE, 1, 2));
+        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7),  EntityName.HERBIVORE, 1, 2));
 
         
     }
@@ -211,6 +215,20 @@ public class Map {
         }
 
         return false;
+    }
+
+
+    public Coordinates getRandomCoordinates() {
+
+        Coordinates randomCoordinates; 
+        while (true) {
+            randomCoordinates = new Coordinates(random.nextInt(8), random.nextInt(8));
+            if(((randomCoordinates.longitude == 0) || (randomCoordinates.latitude == 0))) continue;
+            if(!(isSquareEmpty(randomCoordinates))) continue;
+            return randomCoordinates;
+        }
+        
+     
     }
 
    
