@@ -75,9 +75,9 @@ public class Map {
         setEntitys(new Coordinates(2, 8), new Tree(new Coordinates(2, 1), EntityName.TREE));
         setEntitys(new Coordinates(3, 8), new Grass(new Coordinates(3, 8), EntityName.GRASS));
 
-        setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6),  EntityName.HERBIVORE, 1, 2));
+        setEntitys(new Coordinates(4, 8), new Herbivore(new Coordinates(4, 8),  EntityName.HERBIVORE, 1, 2));
 
-        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7),  EntityName.HERBIVORE, 1, 2));
+        // setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7),  EntityName.HERBIVORE, 1, 2));
 
         
     }
@@ -95,7 +95,7 @@ public class Map {
 
     public Set<Coordinates> getSpeedSquares(Integer speed, Coordinates coordinates) {
         Set<Coordinates> result = new HashSet<>();
-        for (int lon = -speed; lon < speed; lon++) {
+        for (int lon = -speed; lon <= speed; lon++) {
             for (int lat = -speed; lat < speed; lat++) {
                 if(lon == 0 && lat == 0) continue;
                 Coordinates newCoordinates = new Coordinates(coordinates.longitude + lon, coordinates.latitude + lat);

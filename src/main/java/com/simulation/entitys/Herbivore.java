@@ -38,16 +38,16 @@ public class Herbivore extends Creature {
         boolean shifted = false;
 
         // Herbivore newHerbivore = new Herbivore(this.coordinates, this.entityName, this.speed, this.healfPoint);
-        for (Coordinates coordinates : speedSquares) {
-            if(!(map.isSquareAvailableForEntity(coordinates, this.entityName))) continue;
-                if(map.isEntityClose(this.coordinates, coordinates, EntityName.GRASS)) {
+        for (Coordinates speedCoordinates : speedSquares) {
+            if(!(map.isSquareAvailableForEntity(speedCoordinates, EntityName.GRASS))) continue;
+                if(map.isEntityClose(this.coordinates, speedCoordinates, EntityName.GRASS)) {
                     // newHerbivore.healfPoint += 1;
-                    map.eatEntity(this.coordinates, coordinates);
+                    map.eatEntity(this.coordinates, speedCoordinates);
                     shifted = true;
                     break;
                 } else {
                     shifted = false;
-                    availableSquares.add(coordinates);
+                    availableSquares.add(speedCoordinates);
                 }
             
         }
