@@ -6,24 +6,24 @@ public class Main {
     public static void main(String[] args) {
         Map map = new Map();
         MapConsoleRenderer renderer = new MapConsoleRenderer(map);
+        int moveCount = 0;
     
         Actions actions = new Actions(map);
         actions.initAction();
         renderer.render();
         System.out.println("--------------------");
 
-        // actions.turnAction();
-        // renderer.render();
-        // System.out.println("--------------------");
-        
-        // Entity entity = map.entitys.get(new Coordinates(4, 7));
-
-        for (int i = 0; i < 3; i++) {
+       while (moveCount < 10) {
             actions.turnAction();
             renderer.render();
             System.out.println("--------------------");
-        }
+            moveCount += 1;
+            System.out.println("Число ходов: " + moveCount + " Убитых дерьеве: " 
+            + map.eatedGrass + " Убитых травоядных: " + map.eatedHerbivore);
+       }
+
+       
         
-        // int x = 3;
+      
     }
 }

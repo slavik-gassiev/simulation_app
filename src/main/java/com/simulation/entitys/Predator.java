@@ -38,7 +38,7 @@ public class Predator extends Creature {
         boolean shifted = false;
 
         for (Coordinates coordinates : speedSquares) {
-            if(!(map.isSquareAvailableForEntity(coordinates, this.entityName))) continue;
+            if(!(map.isSquareAvailableForEntity(coordinates, EntityName.HERBIVORE))) continue;
             if(map.isEntityClose(this.coordinates, coordinates, EntityName.HERBIVORE)) {
                 map.hitEntity(coordinates, this.hitStrength);
                 if(map.isEntityHPLow(coordinates)) {
