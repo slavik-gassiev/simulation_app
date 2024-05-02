@@ -10,8 +10,6 @@ public class MapConsoleRenderer {
     public MapConsoleRenderer(Map map) {
         this.map = map;
     }
-
-
     public void render() {
         HashMap<Coordinates, Entity> entitys = map.entitys;
         for (int lat = 1; lat <= 8; lat++) {
@@ -29,15 +27,11 @@ public class MapConsoleRenderer {
             System.out.println(stroke);
         }
     }
-
-
     private String getEmptySquare(Coordinates coordinates) {
         String result = "  :: ";
 
-
         return result;
     }
-
 
     private String getSquareForEntity(Coordinates coordinates) {
 
@@ -46,7 +40,6 @@ public class MapConsoleRenderer {
         return result;
 
     }
-
 
     private String getEmojiForEntity(String entityName) {
         switch (entityName) {
