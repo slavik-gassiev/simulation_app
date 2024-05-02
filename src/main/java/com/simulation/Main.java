@@ -4,6 +4,7 @@ import com.simulation.entitys.*;
 
 public class Main {
     public static void main(String[] args) {
+
         Map map = new Map();
         MapConsoleRenderer renderer = new MapConsoleRenderer(map);
         int moveCount = 0;
