@@ -4,13 +4,11 @@ import com.simulation.Coordinates;
 import com.simulation.EntityName;
 import com.simulation.Map;
 
-public class Rock extends Entity{
+public class Rock extends Entity {
 
     public Rock(Coordinates coordinates, EntityName entityName) {
         super(coordinates, entityName);
-        
-        // this.coordinates = coordinates;
-        // this.entityName = entityName;
+
     }
 
     @Override

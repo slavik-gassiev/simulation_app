@@ -9,7 +9,6 @@ public abstract class Entity {
     public EntityName entityName;
     public Integer healfPoint = 1;
 
-
     public Entity(Coordinates coordinates, EntityName entityName) {
         this.coordinates = coordinates;
         this.entityName = entityName;

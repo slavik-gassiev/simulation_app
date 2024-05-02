@@ -1,30 +1,30 @@
 package com.simulation;
 
-import java.util.HashMap;
-
 import com.simulation.entitys.Entity;
+
+import java.util.HashMap;
 
 public class MapConsoleRenderer {
     public Map map;
 
-    public MapConsoleRenderer (Map map) {
+    public MapConsoleRenderer(Map map) {
         this.map = map;
     }
 
 
     public void render() {
-       HashMap<Coordinates, Entity> entitys = map.entitys;
+        HashMap<Coordinates, Entity> entitys = map.entitys;
         for (int lat = 1; lat <= 8; lat++) {
             String stroke = "";
-            for (int lon  = 1; lon <= 8; lon++) {
+            for (int lon = 1; lon <= 8; lon++) {
                 int latitude = 9 - lat;
-                Coordinates coordinates = new Coordinates(lon,latitude);
-                if(entitys.containsKey(coordinates)){
-                    stroke += (" "+ getSquareForEntity(coordinates) + " ");
+                Coordinates coordinates = new Coordinates(lon, latitude);
+                if (entitys.containsKey(coordinates)) {
+                    stroke += (" " + getSquareForEntity(coordinates) + " ");
                 } else {
                     stroke += getEmptySquare(coordinates);
                 }
-                
+
             }
             System.out.println(stroke);
         }
@@ -40,16 +40,16 @@ public class MapConsoleRenderer {
 
 
     private String getSquareForEntity(Coordinates coordinates) {
-        
+
         String entityName = map.entitys.get(coordinates).getName();
         String result = getEmojiForEntity(entityName);
         return result;
-        
+
     }
 
 
     private String getEmojiForEntity(String entityName) {
-        switch(entityName) {
+        switch (entityName) {
             case "GRASS":
                 return " G ";
             case "ROCK":

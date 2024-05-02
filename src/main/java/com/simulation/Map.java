@@ -8,12 +8,10 @@ import com.simulation.entitys.Tree;
 import java.util.*;
 
 public class Map {
+    private final Random random = new Random();
     public HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
-    private Random random = new Random();
-
     int eatedGrass;
     int eatedHerbivore;
-
 
     public void setEntitys(Coordinates coordinates, Entity entity) {
         if (Objects.equals(null, entity)) {
@@ -25,7 +23,6 @@ public class Map {
         }
 
     }
-
 
     public Entity getEntity(Coordinates coordinates) {
         return entitys.get(coordinates);
@@ -64,12 +61,6 @@ public class Map {
         }
     }
 
-
-    public void showEatedEntity() {
-
-    }
-
-
     public void shiftEntity(Coordinates from, Coordinates to) {
 
         shift(from, to);
@@ -99,15 +90,10 @@ public class Map {
 
     }
 
-
     public boolean isSquareInMapAvailable(Coordinates coordinates) {
-        if ((coordinates.longitude > 8 || coordinates.latitude > 8)
-                || (coordinates.longitude < 1 || coordinates.latitude < 1)) {
-            return false;
-        }
-        return true;
+        return (coordinates.longitude <= 8 && coordinates.latitude <= 8)
+                && (coordinates.longitude >= 1 && coordinates.latitude >= 1);
     }
-
 
     public Set<Coordinates> getSpeedSquares(Integer speed, Coordinates coordinates) {
         Set<Coordinates> result = new HashSet<>();
@@ -124,11 +110,7 @@ public class Map {
     }
 
     public boolean isSquareEmpty(Coordinates coordinates) {
-        if (!(entitys.containsKey(coordinates))) {
-            return true;
-        }
-
-        return false;
+        return !(entitys.containsKey(coordinates));
     }
 
     public boolean isSquareAvailableForEntity(Coordinates coordinates, EntityName entityName) {
@@ -140,11 +122,7 @@ public class Map {
             return true;
         }
 
-        if (isSquareHasEntity(coordinates, entityName)) {
-            return true;
-        }
-
-        return false;
+        return isSquareHasEntity(coordinates, entityName);
     }
 
 
@@ -156,11 +134,7 @@ public class Map {
 
         Entity entity = getEntity(coordinates);
 
-        if (Objects.equals(entity.entityName, entityName)) {
-            return true;
-        }
-
-        return false;
+        return Objects.equals(entity.entityName, entityName);
 
     }
 
@@ -168,11 +142,7 @@ public class Map {
         if (!(isSquareHasEntity(checkingCoordinates, entityName))) {
             return false;
         }
-        if (isSquareClose(sourceCoordinates, checkingCoordinates)) {
-            return true;
-        }
-
-        return false;
+        return isSquareClose(sourceCoordinates, checkingCoordinates);
 
     }
 
@@ -218,11 +188,7 @@ public class Map {
 
     public boolean isEntityHPLow(Coordinates coordinates) {
         Entity entity = getEntity(coordinates);
-        if (entity.healfPoint <= 0) {
-            return true;
-        }
-
-        return false;
+        return entity.healfPoint <= 0;
     }
 
 

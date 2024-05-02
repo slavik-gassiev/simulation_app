@@ -3,15 +3,11 @@ package com.simulation;
 public class Coordinates {
     public Integer longitude;
     public Integer latitude;
+
     public Coordinates(Integer longitude, Integer latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }
-
-
-
-
-
 
 
     @Override
@@ -22,6 +18,7 @@ public class Coordinates {
         result = prime * result + ((latitude == null) ? 0 : latitude.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -37,12 +34,9 @@ public class Coordinates {
         } else if (!longitude.equals(other.longitude))
             return false;
         if (latitude == null) {
-            if (other.latitude != null)
-                return false;
-        } else if (!latitude.equals(other.latitude))
-            return false;
-        return true;
+            return other.latitude == null;
+        } else return latitude.equals(other.latitude);
     }
 
-    
+
 }
