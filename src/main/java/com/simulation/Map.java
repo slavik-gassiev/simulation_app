@@ -1,7 +1,6 @@
 package com.simulation;
 
 import com.simulation.entitys.Entity;
-import com.simulation.entitys.Herbivore;
 import com.simulation.entitys.Rock;
 import com.simulation.entitys.Tree;
 
@@ -81,11 +80,6 @@ public class Map {
         setEntitys(new Coordinates(4, 3), new Rock(new Coordinates(4, 3), EntityName.ROCK));
         setEntitys(new Coordinates(6, 5), new Tree(new Coordinates(6, 5), EntityName.TREE));
         setEntitys(new Coordinates(8, 7), new Rock(new Coordinates(8, 7), EntityName.ROCK));
-
-
-//        setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6), EntityName.HERBIVORE, 1, 2));
-
-//        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7), EntityName.HERBIVORE, 1, 2));
 
 
     }
