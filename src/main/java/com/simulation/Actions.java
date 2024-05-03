@@ -34,8 +34,6 @@ public class Actions {
         countEntitys();
         creatSmallEntity();
         makeMoveAllEntitys();
-
-
     }
 
 

@@ -85,8 +85,7 @@ public class Map {
     }
 
     public boolean isSquareInMapAvailable(Coordinates coordinates) {
-        return (coordinates.longitude <= 8 && coordinates.latitude <= 8)
-                && (coordinates.longitude >= 1 && coordinates.latitude >= 1);
+        return (coordinates.longitude <= 8 && coordinates.latitude <= 8) && (coordinates.longitude >= 1 && coordinates.latitude >= 1);
     }
 
     public Set<Coordinates> getSpeedSquares(Integer speed, Coordinates coordinates) {
@@ -147,17 +146,6 @@ public class Map {
         }
 
         Set<Coordinates> closeCoordinates = new HashSet<>();
-        for (int lon = -1; lon < 2; lon++) {
-            if (lon == 0) continue;
-            Coordinates coordinates = new Coordinates(checkingCoordinates.longitude + lon, checkingCoordinates.latitude);
-            closeCoordinates.add(coordinates);
-        }
-
-        for (int lat = -1; lat < 2; lat++) {
-            if (lat == 0) continue;
-            Coordinates coordinates = new Coordinates(checkingCoordinates.longitude, checkingCoordinates.latitude + lat);
-            closeCoordinates.add(coordinates);
-        }
 
         for (int lon = -1; lon < 2; lon++) {
             for (int lat = -1; lat < 2; lat++) {
