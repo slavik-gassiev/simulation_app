@@ -13,7 +13,7 @@ public class Rock extends Entity {
 
     @Override
     public void makeMove(Map map) {
-        System.out.println("Rock");
+
     }
 
 }

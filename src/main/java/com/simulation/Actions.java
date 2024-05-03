@@ -10,8 +10,8 @@ import java.util.Objects;
 
 public class Actions {
 
-    HashMap<EntityName, EntityCount> entitysCounter = new HashMap<>();
     private final Map map;
+    HashMap<EntityName, EntityCount> entitysCounter = new HashMap<>();
 
     public Actions(Map map) {
         this.map = map;
@@ -32,14 +32,14 @@ public class Actions {
     public void turnAction() {
         setEntityCount();
         countEntitys();
-        creatSmalEntity();
+        creatSmallEntity();
         makeMoveAllEntitys();
 
 
     }
 
 
-    private void creatSmalEntity() {
+    private void creatSmallEntity() {
         for (EntityCount entityCount : entitysCounter.values()) {
             if ((entityCount.count >= 2)) continue;
             Coordinates coordinates = map.getRandomCoordinates();
@@ -49,17 +49,16 @@ public class Actions {
                     break;
                 case HERBIVORE:
                     map.entitys.put(coordinates, new Herbivore(coordinates, EntityName.HERBIVORE, 1, 1));
+                    break;
                 case PREDATOR:
                     map.entitys.put(coordinates, new Predator(coordinates, EntityName.PREDATOR, 1, 1, 1));
-
+                    break;
                 default:
                     break;
             }
 
         }
     }
-
-
     private void countEntitys() {
 
 
@@ -95,8 +94,6 @@ public class Actions {
 
 
     }
-
-
     private void makeMoveAllEntitys() {
         List<Coordinates> newEntitys = new LinkedList<>();
 
@@ -109,7 +106,6 @@ public class Actions {
 
 
         }
-
 
         for (Coordinates coordinates : newEntitys) {
             int lon = coordinates.longitude;

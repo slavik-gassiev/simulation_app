@@ -14,6 +14,6 @@ public class Tree extends Entity{
 
     @Override
     public void makeMove(Map map) {
-        System.out.println("Tree");
+
     }
 }

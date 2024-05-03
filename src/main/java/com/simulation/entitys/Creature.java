@@ -16,6 +16,8 @@ public abstract class Creature extends Entity {
         this.healfPoint = healfPoint;
     }
 
+
+
     public abstract void makeMove(Map map);
     // Проверить на то что обект не выходит за грани каррты
     // Проверить что клетка пустая для хода

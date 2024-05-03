@@ -15,7 +15,6 @@ public class Grass extends Entity {
 
     @Override
     public void makeMove(Map map) {
-        System.out.println("Grass");
     }
 
 }

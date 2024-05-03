@@ -20,14 +20,14 @@ public class MapConsoleRenderer {
                 if (entitys.containsKey(coordinates)) {
                     stroke += (" " + getSquareForEntity(coordinates) + " ");
                 } else {
-                    stroke += getEmptySquare(coordinates);
+                    stroke += getEmptySquare();
                 }
 
             }
             System.out.println(stroke);
         }
     }
-    private String getEmptySquare(Coordinates coordinates) {
+    private String getEmptySquare() {
         String result = "  :: ";
 
         return result;

@@ -83,9 +83,9 @@ public class Map {
         setEntitys(new Coordinates(8, 7), new Rock(new Coordinates(8, 7), EntityName.ROCK));
 
 
-        setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6), EntityName.HERBIVORE, 1, 2));
+//        setEntitys(new Coordinates(6, 6), new Herbivore(new Coordinates(6, 6), EntityName.HERBIVORE, 1, 2));
 
-        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7), EntityName.HERBIVORE, 1, 2));
+//        setEntitys(new Coordinates(7, 7), new Herbivore(new Coordinates(7, 7), EntityName.HERBIVORE, 1, 2));
 
 
     }
