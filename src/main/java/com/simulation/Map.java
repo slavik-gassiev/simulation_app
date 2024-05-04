@@ -9,8 +9,8 @@ import java.util.*;
 public class Map {
     private final Random random = new Random();
     public HashMap<Coordinates, Entity> entitys = new HashMap<Coordinates, Entity>();
-    int eatedGrass;
-    int eatedHerbivore;
+    public int eatedGrass;
+    public int eatedHerbivore;
 
     public void setEntitys(Coordinates coordinates, Entity entity) {
         if (Objects.equals(null, entity)) {
@@ -71,18 +71,7 @@ public class Map {
         //    shiftEntity(coordinates, entity);
     }
 
-    public void setDefaultEntitys() {
 
-        setEntitys(new Coordinates(1, 2), new Rock(new Coordinates(1, 2), EntityName.ROCK));
-        setEntitys(new Coordinates(2, 4), new Tree(new Coordinates(2, 4), EntityName.TREE));
-        setEntitys(new Coordinates(3, 6), new Rock(new Coordinates(3, 6), EntityName.ROCK));
-
-        setEntitys(new Coordinates(4, 3), new Rock(new Coordinates(4, 3), EntityName.ROCK));
-        setEntitys(new Coordinates(6, 5), new Tree(new Coordinates(6, 5), EntityName.TREE));
-        setEntitys(new Coordinates(8, 7), new Rock(new Coordinates(8, 7), EntityName.ROCK));
-
-
-    }
 
     public boolean isSquareInMapAvailable(Coordinates coordinates) {
         return (coordinates.longitude <= 8 && coordinates.latitude <= 8) && (coordinates.longitude >= 1 && coordinates.latitude >= 1);
