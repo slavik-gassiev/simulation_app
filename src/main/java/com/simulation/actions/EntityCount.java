@@ -1,4 +1,4 @@
-package com.simulation.entitys;
+package com.simulation.actions;
 
 import com.simulation.EntityName;
 

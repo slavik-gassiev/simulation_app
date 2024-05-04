@@ -2,7 +2,7 @@ package com.simulation.entitys;
 
 import com.simulation.Coordinates;
 import com.simulation.EntityName;
-import com.simulation.Map;
+import com.simulation.map.Map;
 
 public abstract class Entity {
     public Coordinates coordinates;
@@ -10,13 +10,14 @@ public abstract class Entity {
     public Integer healfPoint = 1;
 
     public Entity(Coordinates coordinates, EntityName entityName) {
+
         this.coordinates = coordinates;
         this.entityName = entityName;
     }
 
     public String getName() {
-        String name = this.entityName.toString();
-        return name;
+      return this.entityName.toString();
+
     }
 
     public abstract void makeMove(Map map);

@@ -1,6 +1,7 @@
 package com.simulation;
 
 import com.simulation.entitys.Entity;
+import com.simulation.map.Map;
 
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ public class MapConsoleRenderer {
         this.map = map;
     }
     public void render() {
-        HashMap<Coordinates, Entity> entitys = map.entitys;
+        HashMap<Coordinates, Entity> entitys = Map.getEntitys();
         for (int lat = 1; lat <= 8; lat++) {
             String stroke = "";
             for (int lon = 1; lon <= 8; lon++) {
@@ -35,7 +36,7 @@ public class MapConsoleRenderer {
 
     private String getSquareForEntity(Coordinates coordinates) {
 
-        String entityName = map.entitys.get(coordinates).getName();
+        String entityName = Map.getEntitys().get(coordinates).getName();
         String result = getEmojiForEntity(entityName);
         return result;
 

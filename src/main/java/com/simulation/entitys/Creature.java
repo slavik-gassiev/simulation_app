@@ -2,7 +2,7 @@ package com.simulation.entitys;
 
 import com.simulation.Coordinates;
 import com.simulation.EntityName;
-import com.simulation.Map;
+import com.simulation.map.Map;
 
 public abstract class Creature extends Entity {
 
