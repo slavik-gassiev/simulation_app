@@ -75,10 +75,7 @@ public class Map {
 
     }
 
-    public boolean isEntityHPLow(Coordinates coordinates) {
-        Entity entity = getEntity(coordinates);
-        return entity.healfPoint <= 0;
-    }
+
 
 
 }
