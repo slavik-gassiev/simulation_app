@@ -28,8 +28,8 @@ public class ActionTurn {
         }
 
         for (Coordinates coordinates : newEntitys) {
-            int lon = coordinates.longitude;
-            int lat = coordinates.latitude;
+            int lon = coordinates.height;
+            int lat = coordinates.weight;
 
             Map.getEntitys().get(new Coordinates(lon, lat)).makeMove(map);
         }

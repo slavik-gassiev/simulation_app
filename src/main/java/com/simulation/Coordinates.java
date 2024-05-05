@@ -3,12 +3,12 @@ package com.simulation;
 import java.util.Objects;
 
 public class Coordinates {
-    public int longitude;
-    public int latitude;
+    public int height;
+    public int weight;
 
-    public Coordinates(Integer longitude, Integer latitude) {
-        this.longitude = longitude;
-        this.latitude = latitude;
+    public Coordinates(Integer height, Integer weight) {
+        this.height = height;
+        this.weight = weight;
     }
 
     @Override
@@ -16,11 +16,11 @@ public class Coordinates {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Coordinates that = (Coordinates) o;
-        return longitude == that.longitude && latitude == that.latitude;
+        return height == that.height && weight == that.weight;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(longitude, latitude);
+        return Objects.hash(height, weight);
     }
 }
