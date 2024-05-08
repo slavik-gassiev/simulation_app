@@ -5,7 +5,6 @@ import com.simulation.Coordinates;
 import com.simulation.EntityName;
 import com.simulation.entitys.Entity;
 import com.simulation.map.Map;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +19,6 @@ public class ActionTurn {
         List<Coordinates> newEntitys = new LinkedList<>();
 
         for (Entity entity : Map.getEntitys().values()) {
-
             if (!(Objects.equals(entity.entityName, EntityName.HERBIVORE) ||
                     Objects.equals(entity.entityName, EntityName.PREDATOR) ||
                     Objects.equals(entity, null))) continue;
@@ -30,7 +28,6 @@ public class ActionTurn {
         for (Coordinates coordinates : newEntitys) {
             int lon = coordinates.height;
             int lat = coordinates.weight;
-
             Map.getEntitys().get(new Coordinates(lon, lat)).makeMove(map);
         }
     }

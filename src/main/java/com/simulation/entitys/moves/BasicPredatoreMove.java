@@ -5,7 +5,6 @@ import com.simulation.EntityName;
 import com.simulation.entitys.EntityChecker;
 import com.simulation.map.Map;
 import com.simulation.map.MapChecker;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;

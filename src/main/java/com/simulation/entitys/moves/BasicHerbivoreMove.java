@@ -5,14 +5,11 @@ import com.simulation.EntityName;
 import com.simulation.entitys.EntityChecker;
 import com.simulation.map.Map;
 import com.simulation.map.MapChecker;
-
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class BasicHerbivoreMove implements HerbivoreMoves {
-
     @Override
     public void move(Map map, Coordinates coordinates, EntityName entityName, Integer speed, Integer healfPoint) {
         Set<Coordinates> speedSquares = MapChecker.getSpeedSquares(speed, coordinates);
@@ -29,15 +26,12 @@ public class BasicHerbivoreMove implements HerbivoreMoves {
                 availableSquares.add(speedCoordinates);
 
             }
-
         }
 
         if (!shifted) {
-
             int randomInt = MapChecker.random.nextInt(availableSquares.size());
             Coordinates randomCoordinates = availableSquares.get(randomInt);
             map.shiftEntity(coordinates, randomCoordinates);
-
         }
     }
 }

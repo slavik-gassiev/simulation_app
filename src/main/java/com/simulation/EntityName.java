@@ -6,6 +6,4 @@ public enum EntityName {
     TREE,
     HERBIVORE,
     PREDATOR
-
-
 }

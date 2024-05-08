@@ -5,18 +5,14 @@ import com.simulation.EntityName;
 import com.simulation.map.Map;
 
 public abstract class Creature extends Entity {
-
     public Integer speed;
     public Integer healfPoint;
 
     public Creature(Coordinates coordinates, EntityName entityName, Integer speed, Integer healfPoint) {
         super(coordinates, entityName);
-
         this.speed = speed;
         this.healfPoint = healfPoint;
     }
-
-
 
     public abstract void makeMove(Map map);
     // Проверить на то что обект не выходит за грани каррты

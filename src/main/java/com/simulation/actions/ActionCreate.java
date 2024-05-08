@@ -1,8 +1,6 @@
 package com.simulation.actions;
-
 import com.simulation.Coordinates;
 import com.simulation.EntityName;
-import com.simulation.entitys.EntityChecker;
 import com.simulation.entitys.Grass;
 import com.simulation.entitys.Herbivore;
 import com.simulation.entitys.Predator;
@@ -10,20 +8,15 @@ import com.simulation.entitys.moves.BasicHerbivoreMove;
 import com.simulation.entitys.moves.BasicPredatoreMove;
 import com.simulation.map.Map;
 import com.simulation.map.MapChecker;
-
 import java.util.HashMap;
-
 public class ActionCreate {
     public static final int HOW_MANY_ENTITY_CREATE = 3;
     Map map;
-
-
     public ActionCreate(Map map) {
         this.map = map;
 
 
     }
-
     public void creatSmallEntity(HashMap<EntityName, EntityCount> entitysCounter) {
         for (EntityCount entityCount : entitysCounter.values()) {
             if ((entityCount.count >= HOW_MANY_ENTITY_CREATE)) continue;
@@ -45,7 +38,6 @@ public class ActionCreate {
                 default:
                     break;
             }
-
         }
     }
 }

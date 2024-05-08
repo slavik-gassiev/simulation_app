@@ -10,14 +10,12 @@ public abstract class Entity {
     public Integer healfPoint = 1;
 
     public Entity(Coordinates coordinates, EntityName entityName) {
-
         this.coordinates = coordinates;
         this.entityName = entityName;
     }
 
     public String getName() {
       return this.entityName.toString();
-
     }
 
     public abstract void makeMove(Map map);

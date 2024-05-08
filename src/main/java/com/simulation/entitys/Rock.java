@@ -5,7 +5,6 @@ import com.simulation.EntityName;
 import com.simulation.map.Map;
 
 public class Rock extends Entity {
-
     public Rock(Coordinates coordinates, EntityName entityName) {
         super(coordinates, entityName);
 

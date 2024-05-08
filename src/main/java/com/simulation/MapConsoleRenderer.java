@@ -2,7 +2,6 @@ package com.simulation;
 
 import com.simulation.entitys.Entity;
 import com.simulation.map.Map;
-
 import java.util.HashMap;
 
 public class MapConsoleRenderer {
@@ -23,23 +22,20 @@ public class MapConsoleRenderer {
                 } else {
                     stroke += getEmptySquare();
                 }
-
             }
             System.out.println(stroke);
         }
     }
     private String getEmptySquare() {
         String result = "  :: ";
-
         return result;
     }
 
     private String getSquareForEntity(Coordinates coordinates) {
-
         String entityName = Map.getEntitys().get(coordinates).getName();
         String result = getEmojiForEntity(entityName);
-        return result;
 
+        return result;
     }
 
     private String getEmojiForEntity(String entityName) {
